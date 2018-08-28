@@ -1,13 +1,13 @@
 package com.zhou.commonlibrary.base;
 
-import android.content.Context;
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.trello.rxlifecycle.components.support.RxFragment;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 import com.zhou.commonlibrary.utils.TUtil;
 
 import butterknife.ButterKnife;
@@ -23,7 +23,7 @@ public abstract class BaseFragment<M extends BaseModel, P extends BasePresenter>
     public M mModel;
 
     protected Unbinder mUnbinder;
-    protected Context mContext;
+    public Activity mContext;
     private boolean isViewPrepared;//view准备完毕
     private boolean hasFetchData;//是否触发过懒加载
     private View rootView;

@@ -26,6 +26,37 @@ public class FileUtil {
 
     }
 
+    public static boolean saveFile(InputStream inputStream, OutputStream outputStream) {
+        if (inputStream == null || outputStream == null) {
+            return false;
+        }
+
+        try {
+            try {
+                byte[] buffer = new byte[1024 * 4];
+
+                while (true) {
+                    int read = inputStream.read(buffer);
+                    if (read == -1) {
+                        break;
+                    }
+                    outputStream.write(buffer, 0, read);
+                }
+                outputStream.flush();
+                return true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                return false;
+            } finally {
+                inputStream.close();
+                outputStream.close();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public static File from(Context context, Uri uri) throws IOException {
         InputStream inputStream = context.getContentResolver().openInputStream(uri);
         String fileName = getFileName(context, uri);

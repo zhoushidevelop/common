@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.view.Window;
 
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
+import com.trello.rxlifecycle2.components.RxActivity;
 import com.zhou.commonlibrary.R;
 import com.zhou.commonlibrary.utils.TUtil;
 import com.zhou.commonlibrary.widget.StatusBarCompat;
@@ -14,14 +14,13 @@ import com.zhou.commonlibrary.widget.StatusBarCompat;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends RxAppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter, M extends BaseModel> extends RxActivity {
+
 
     public P mPresenter;
     public M mModel;
-
-
-    protected Unbinder mUnbinder;
-    protected Context mContext;
+    public Unbinder mUnbinder;
+    public Context mContext;
 
     protected abstract int getLayoutId();
 
